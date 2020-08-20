@@ -20,19 +20,19 @@ public class Car extends Vehicle{                                               
 
     // SET METHODS
 
-    public void setWheels(int wheels) {
+    public void setWheels(int wheels) {                                                                                 // . Set method for the wheels instance.
         this.wheels = wheels;
     }
 
-    public void setDoors(int doors) {
+    public void setDoors(int doors) {                                                                                   // . Set method for the doors instance.
         this.doors = doors;
     }
 
-    public void setDirection(int direction) {
+    public void setDirection(int direction) {                                                                           // . Set method for the direction instance.
         this.direction = direction;
     }
 
-    public void setGear(int gear) {
+    public void setGear(int gear) {                                                                                     // . Set method for the Gear instance.
         this.gear = gear;
     }
 
@@ -57,16 +57,15 @@ public class Car extends Vehicle{                                               
 
     // OTHER METHODS
 
-    public void steering(int direction){
-        this.direction = direction;
-        System.out.println("The car is steering of " + direction + "Degrees.");
+    public void steering(int direction){                                                                                // . Creating a method steering with one parameter of type int.
+        this.direction = direction;                                                                                     // . The method set the value to the instance variable.
+        System.out.println("The car is steering of " + direction + "Degrees.");                                         // . Printing the outcome.
     }
 
 
-    public void changingGear(int speed) {
-        this.setSpeed(speed);
-        this.gear = getGear();
-        if(speed == 0){
+    public void changingGear(int speed) {                                                                               // . Creating a method changingGear.
+
+        if(speed == 0){                                                                                                 // . If statement to check the the range of speed to set the gear.
             gear = 0;
         }else if(speed <= 5 ){
             gear = 1;
@@ -83,32 +82,32 @@ public class Car extends Vehicle{                                               
         }
 
 
-        if(gear == 0){
+        if(gear == 0){                                                                                                  // . If the speed is 0 the car is not moving, then is on neutral.
             System.out.println("The actual gear of the car is on: neutral gear.");
         }else {
 
-            System.out.println("The actual gear of the car is on: " + gear + " gear.");
+            System.out.println("The actual gear of the car is on: " + gear + " gear.");                                 // . if not print the message + the gear.
         }
     }
 
 
-    @Override
+    @Override                                                                                                           // . Overriding the move method from the parent class (Vehicle).
     public void move(int speed) {
         super.move(speed);
-        changingGear(speed);
+        changingGear(speed);                                                                                            // . We add another method that changes the gear in base of the speed settled.
     }
 
-    @Override
+    @Override                                                                                                           // . Overriding the increaseSpeed method from the parent class (Vehicle).
     public int increaseSpeed(int speed){
-        int actualSpeed = super.increaseSpeed(speed);
-        changingGear(actualSpeed);
+        int actualSpeed = super.increaseSpeed(speed);                                                                   // . Retrieving the the actual speed after increasing it with the method.
+        changingGear(actualSpeed);                                                                                      // . Calling the method changingGear and using the actual speed as a parameter.
         return actualSpeed;
     }
 
-    @Override
+    @Override                                                                                                           // . Overriding the decreaseSpeed method from the parent class (Vehicle).
     public int decreaseSpeed(int speed){
-        int actualSpeed = super.decreaseSpeed(speed);
-        changingGear(actualSpeed);
+        int actualSpeed = super.decreaseSpeed(speed);                                                                   // . Retrieving the the actual speed after increasing it with the method.
+        changingGear(actualSpeed);                                                                                      // . Calling the method changingGear and using the actual speed as a parameter.
         return actualSpeed;
     }
 }
